@@ -93,20 +93,30 @@ class CounterModel extends Model {
 Kemudian di widget:
 
 ```dart
-Copy code
 class CounterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<CounterModel>(
-      builder: (context, child, model) => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Counter Value: ${model.counter}'),
-          ElevatedButton(
-            onPressed: () => model.increment(),
-            child: Text('Increment'),
-          ),
-        ],
+      builder: (context, child, model) => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Counter Value: ${model.counter}'),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                model.increment();
+              },
+              child: Text('Increment'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                model.decrement();
+              },
+              child: Text('Decrement'),
+            ),
+          ],
+        ),
       ),
     );
   }
